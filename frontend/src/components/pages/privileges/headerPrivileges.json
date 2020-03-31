@@ -1,0 +1,14 @@
+[
+  {
+    "title": "ID",
+    "dataIndex": "id"
+  },
+  {
+    "title": "Привилегия",
+    "dataIndex": "privileges"
+  },
+  {
+    "title": "Псевдоним",
+    "dataIndex": "alias"
+  }
+]

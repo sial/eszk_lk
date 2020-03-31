@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Главная",
+    "path": "/"
+  },
+  {
+    "title": "Роли",
+    "path": "/roles"
+  },
+  {
+    "title": "Привилегии",
+    "path": "/privileges"
+  }
+]

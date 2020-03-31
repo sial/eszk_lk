@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Время",
+    "dataIndex": "time"
+  },
+  {
+    "title": "Действие",
+    "dataIndex": "action"
+  },
+  {
+    "title": "Автор",
+    "dataIndex": "author"
+  },
+  {
+    "title": "IP",
+    "dataIndex": "ip"
+  },
+  {
+    "title": "Результат",
+    "dataIndex": "result"
+  },
+  {
+    "title": "Комментарий",
+    "dataIndex": "comment"
+  }
+]

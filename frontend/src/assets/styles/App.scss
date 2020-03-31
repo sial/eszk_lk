@@ -1,0 +1,22 @@
+@import "~antd/dist/antd.css";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "fonts/Roboto/Roboto";
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-page{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+}
+
+.table-name{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+}
+
+.header{
+  min-height: 64px;
+  max-height: 64px;
+}

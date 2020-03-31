@@ -1,17 +1,19 @@
-import React from 'react'
+import Home from '../components/pages/home'
+import Roles from '../components/pages/roles'
+import Privileges from '../components/pages/privileges'
 
 const router: Array<Record<string, any>> = [
   {
-    component: 'hz',
-    path: '/about',
-    routes: [
-      {
-        component: () => {
-          return <div>hello</div>
-        },
-        path: '/about/ggg'
-      }
-    ]
+    path: '//',
+    component: Home
+  },
+  {
+    path: '/roles',
+    component: Roles
+  },
+  {
+    path: '/privileges',
+    component: Privileges
   }
 ]
 

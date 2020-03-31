@@ -1,0 +1,11 @@
+[
+  {
+    "title": "ID",
+    "dataIndex": "id"
+  },
+  {
+    "title": "Имя",
+    "dataIndex": "name",
+    "width": "80vh"
+  }
+]
