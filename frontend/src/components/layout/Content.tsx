@@ -8,9 +8,12 @@ interface IContent {
 const Content: React.FC<IContent> = ({ children }) => {
     const { Content } = Layout
     return (
-        <Content style={{ padding: '25px 48px', marginTop: '6vh' }}>
+        // <div style={{ padding: '25px 48px', marginTop: '6vh' }}>
+        //     {children}
+        // </div>
+        <div className="container-fluid p-0">
             {children}
-        </Content>
+        </div>
     )
 }
 

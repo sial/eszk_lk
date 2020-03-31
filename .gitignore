@@ -6,3 +6,8 @@ backend/.idea/encodings.xml
 backend/.idea/misc.xml
 backend/.idea/modules.xml
 backend/.idea/vcs.xml
+frontend/.idea/.gitignore
+frontend/.idea/frontend.iml
+frontend/.idea/misc.xml
+frontend/.idea/modules.xml
+frontend/.idea/vcs.xml

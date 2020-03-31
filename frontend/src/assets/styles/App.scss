@@ -20,3 +20,10 @@ body{
   min-height: 64px;
   max-height: 64px;
 }
+
+
+html,
+body,
+#root {
+  height: 100%;
+}

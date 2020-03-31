@@ -78,44 +78,66 @@ const Privileges: React.FC = () => {
     }, [actionColumn])
 
     return (
-        <div>
-            <div className="d-flex 
-                            align-items-center 
-                            title-page pb-1">
-                <MaterialIcon size={24} color="#7F8391" icon="lock_open"/>
-                <span className="pl-1">Привилегии</span>
-            </div>
-            <div className="row">
-                <div className="col-8">
-                    <div className="row">
-                        <div className="col">
-                            <Card bodyStyle={{padding: 0}}>
-                                    <Table columns={headerPrivileges}
-                                        dataSource={dataPrivileges}
-                                        rowKey="id"
-                                        size="small"
-                                        pagination={
-                                            {
-                                                showSizeChanger: true
-                                            }
-                                        }/>
-                            </Card>
+        <div className="container-md d-flex">
+            <div className="row flex-fill">
+                <div className="col-sm-6 h-100">
+                    {/*<div className="row" style={{ backgroundColor: "red"}}>*/}
+                    {/*    t*/}
+                    {/*</div>*/}
+                    {/*<div className="row" style={{ backgroundColor: "yellow"}}>*/}
+                    {/*    s*/}
+                    {/*</div>*/}
+
+                    <div className="row h-50 bg-warning">
+                        <div className="col-sm-12" id="mmenu_screen--book">
+                            Booking
                         </div>
                     </div>
-                    <div className="mt-4">
-                        <div className="row">
-                            <div className="col">
-                                <Audit data={dataAudit}/>
-                            </div>
+                    <div className="row h-50 bg-success">
+                        <div className="col-sm-12" id="mmenu_screen--information">
+                            Info
                         </div>
                     </div>
                 </div>
-                <div className="col-3">
-                    <EditCard editPrivilege={editPrivilege}
-                            setEditPrivilege={setEditPrivilege}
-                            savePrivilege={() => setEditPrivilege(null)}/>
-                </div>
+
+                {/*<div className="row">*/}
+                {/*    <MaterialIcon size={24} color="#7F8391" icon="lock_open"/>*/}
+                {/*    <span className="pl-1">Привилегии</span>*/}
+                {/*</div>*/}
+
             </div>
+
+            {/*<div className="row">*/}
+            {/*    <div className="col-8">*/}
+            {/*        <div className="row">*/}
+            {/*            <div className="col">*/}
+            {/*                <Card bodyStyle={{padding: 0}}>*/}
+            {/*                        <Table columns={headerPrivileges}*/}
+            {/*                            dataSource={dataPrivileges}*/}
+            {/*                            rowKey="id"*/}
+            {/*                            size="small"*/}
+            {/*                            pagination={*/}
+            {/*                                {*/}
+            {/*                                    showSizeChanger: true*/}
+            {/*                                }*/}
+            {/*                            }/>*/}
+            {/*                </Card>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="mt-4">*/}
+            {/*            <div className="row">*/}
+            {/*                <div className="col">*/}
+            {/*                    <Audit data={dataAudit}/>*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className="col-3">*/}
+            {/*        <EditCard editPrivilege={editPrivilege}*/}
+            {/*                setEditPrivilege={setEditPrivilege}*/}
+            {/*                savePrivilege={() => setEditPrivilege(null)}/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
