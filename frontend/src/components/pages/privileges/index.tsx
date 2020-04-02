@@ -1,10 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import {Table, Card, Button} from 'antd'
+import {Table, Button} from 'antd'
 import headerPrivileges from './headerPrivileges.json'
 import Audit from '../../utils/audit'
-import MaterialIcon from 'material-icons-react'
 import EditCard from './EditCard'
 import '../../../assets/styles/privileges.scss'
+import {Box, Container, createStyles, Grid, Paper, Card, Theme, CardContent} from "@material-ui/core";
+import Title from "antd/lib/typography/Title";
+// import Typography from "@material-ui/core/Typography";
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+import { cardStyles } from "../../layout/useStyles";
 
 const Privileges: React.FC = () => {
     let [editPrivilege, setEditPrivilege] =
@@ -77,68 +83,156 @@ const Privileges: React.FC = () => {
         }
     }, [actionColumn])
 
+
+    const classes = cardStyles();
+
     return (
-        <div className="container-md d-flex">
-            <div className="row flex-fill">
-                <div className="col-sm-6 h-100">
-                    {/*<div className="row" style={{ backgroundColor: "red"}}>*/}
-                    {/*    t*/}
-                    {/*</div>*/}
-                    {/*<div className="row" style={{ backgroundColor: "yellow"}}>*/}
-                    {/*    s*/}
-                    {/*</div>*/}
+        <Grid container direction="column" spacing={1}>
+            <Grid item>
+                <Grid container direction="row" alignItems="center" alignContent="center" spacing={1}>
+                    <Grid item>
+                        <LockOpenIcon
+                            fontSize="small"
+                            htmlColor="#7F8391"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Typography variant='h5'>Привилегии</Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item direction='row' xs>
+                <Grid container spacing={2}>
+                    <Grid item md={9}>
+                        {/*<Card bodyStyle={{padding: 0}}>*/}
+                        {/*    <Table columns={headerPrivileges}*/}
+                        {/*           dataSource={dataPrivileges}*/}
+                        {/*           rowKey="id"*/}
+                        {/*           size="small"*/}
+                        {/*           pagination={{*/}
+                        {/*               showSizeChanger: true*/}
+                        {/*           }}*/}
+                        {/*    />*/}
+                        {/*</Card>*/}
 
-                    <div className="row h-50 bg-warning">
-                        <div className="col-sm-12" id="mmenu_screen--book">
-                            Booking
-                        </div>
-                    </div>
-                    <div className="row h-50 bg-success">
-                        <div className="col-sm-12" id="mmenu_screen--information">
-                            Info
-                        </div>
-                    </div>
-                </div>
+                        {/*<Paper>*/}
+                        {/*    test*/}
+                        {/*</Paper>*/}
 
-                {/*<div className="row">*/}
-                {/*    <MaterialIcon size={24} color="#7F8391" icon="lock_open"/>*/}
-                {/*    <span className="pl-1">Привилегии</span>*/}
-                {/*</div>*/}
+                        <Card variant='outlined'>
+                            <CardContent className={classes.cardPadding}>
+                                <Table columns={headerPrivileges}
+                                       dataSource={dataPrivileges}
+                                       rowKey="id"
+                                       size="small"
+                                       pagination={{
+                                           showSizeChanger: true
+                                       }}
+                                />
+                            </CardContent>
+                        </Card>
+                    </Grid>
 
-            </div>
+                    <Grid item md={3}>
+                         <EditCard editPrivilege={editPrivilege}
+                                 setEditPrivilege={setEditPrivilege}
+                                 savePrivilege={() => setEditPrivilege(null)}/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item xs>
+                <Grid container spacing={2}>
+                    <Grid item md={9}>
+                        <Audit data={dataAudit}/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        // <Grid container direction="column">
+        //         <Grid item>
+        //             <Grid container direction="row" alignItems="center" alignContent="center">
+        //                 <Grid item>
+        //                     <LockOpenIcon
+        //                         fontSize="small"
+        //                         htmlColor="#7F8391"
+        //                     />
+        //                 </Grid>
+        //                 <Grid item>
+        //                     <Box pl={0.5}>
+        //                         <Typography variant='h5'>Привилегии</Typography>
+        //                     </Box>
+        //                 </Grid>
+        //             </Grid>
+        //         </Grid>
+        //         <Grid md item className="bg-success">
+        //             Таблица Привелегий
+        //         </Grid>
+        //         <Grid md item className="bg-info">
+        //             Аудит
+        //         </Grid>
+            // </Grid>
 
-            {/*<div className="row">*/}
-            {/*    <div className="col-8">*/}
-            {/*        <div className="row">*/}
-            {/*            <div className="col">*/}
-            {/*                <Card bodyStyle={{padding: 0}}>*/}
-            {/*                        <Table columns={headerPrivileges}*/}
-            {/*                            dataSource={dataPrivileges}*/}
-            {/*                            rowKey="id"*/}
-            {/*                            size="small"*/}
-            {/*                            pagination={*/}
-            {/*                                {*/}
-            {/*                                    showSizeChanger: true*/}
-            {/*                                }*/}
-            {/*                            }/>*/}
-            {/*                </Card>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        <div className="mt-4">*/}
-            {/*            <div className="row">*/}
-            {/*                <div className="col">*/}
-            {/*                    <Audit data={dataAudit}/>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-3">*/}
-            {/*        <EditCard editPrivilege={editPrivilege}*/}
-            {/*                setEditPrivilege={setEditPrivilege}*/}
-            {/*                savePrivilege={() => setEditPrivilege(null)}/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-        </div>
+        // <div className="container-md d-flex">
+        //     <div className="row flex-fill">
+        //         <div className="col-sm-6 h-100">
+        //             {/*<div className="row" style={{ backgroundColor: "red"}}>*/}
+        //             {/*    t*/}
+        //             {/*</div>*/}
+        //             {/*<div className="row" style={{ backgroundColor: "yellow"}}>*/}
+        //             {/*    s*/}
+        //             {/*</div>*/}
+        //
+        //             <div className="row h-50 bg-warning">
+        //                 <div className="col-sm-12" id="mmenu_screen--book">
+        //                     Booking
+        //                 </div>
+        //             </div>
+        //             <div className="row h-50 bg-success">
+        //                 <div className="col-sm-12" id="mmenu_screen--information">
+        //                     Info
+        //                 </div>
+        //             </div>
+        //         </div>
+        //
+        //         {/*<div className="row">*/}
+        //         {/*    <MaterialIcon size={24} color="#7F8391" icon="lock_open"/>*/}
+        //         {/*    <span className="pl-1">Привилегии</span>*/}
+        //         {/*</div>*/}
+        //
+        //     </div>
+        //
+        //     {/*<div className="row">*/}
+        //     {/*    <div className="col-8">*/}
+        //     {/*        <div className="row">*/}
+        //     {/*            <div className="col">*/}
+        //     {/*                <Card bodyStyle={{padding: 0}}>*/}
+        //     {/*                        <Table columns={headerPrivileges}*/}
+        //     {/*                            dataSource={dataPrivileges}*/}
+        //     {/*                            rowKey="id"*/}
+        //     {/*                            size="small"*/}
+        //     {/*                            pagination={*/}
+        //     {/*                                {*/}
+        //     {/*                                    showSizeChanger: true*/}
+        //     {/*                                }*/}
+        //     {/*                            }/>*/}
+        //     {/*                </Card>*/}
+        //     {/*            </div>*/}
+        //     {/*        </div>*/}
+        //     {/*        <div className="mt-4">*/}
+        //     {/*            <div className="row">*/}
+        //     {/*                <div className="col">*/}
+        //     {/*                    <Audit data={dataAudit}/>*/}
+        //     {/*                </div>*/}
+        //     {/*            </div>*/}
+        //     {/*        </div>*/}
+        //     {/*    </div>*/}
+        //     {/*    <div className="col-3">*/}
+        //     {/*        <EditCard editPrivilege={editPrivilege}*/}
+        //     {/*                setEditPrivilege={setEditPrivilege}*/}
+        //     {/*                savePrivilege={() => setEditPrivilege(null)}/>*/}
+        //     {/*    </div>*/}
+        //     {/*</div>*/}
+        // </div>
     )
 }
 

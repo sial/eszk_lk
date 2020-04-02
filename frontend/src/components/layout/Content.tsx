@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react'
 import { Layout } from 'antd'
+import {Box, Container, createStyles, Grid, Theme} from "@material-ui/core";
 
 interface IContent {
     children: ReactElement
@@ -7,13 +8,11 @@ interface IContent {
 
 const Content: React.FC<IContent> = ({ children }) => {
     const { Content } = Layout
+
     return (
-        // <div style={{ padding: '25px 48px', marginTop: '6vh' }}>
-        //     {children}
-        // </div>
-        <div className="container-fluid p-0">
-            {children}
-        </div>
+            <Grid container xs spacing={1}>
+                {children}
+            </Grid>
     )
 }
 
