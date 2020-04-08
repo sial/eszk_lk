@@ -10,7 +10,7 @@ const Content: React.FC<IContent> = ({ children }) => {
     const { Content } = Layout
 
     return (
-            <Grid container xs spacing={1}>
+            <Grid container spacing={1}>
                 {children}
             </Grid>
     )

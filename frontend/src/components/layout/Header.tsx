@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as Logo } from '../../assets/images/layout/logo.svg'
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-import {AppBar, createStyles, Grid, IconButton, Link, Theme, Toolbar, Typography} from "@material-ui/core";
+import {AppBar, createStyles, IconButton, Link, Theme, Toolbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
 interface IHeader {
@@ -29,24 +29,29 @@ const Header: React.FC<IHeader> = ({ handleMenu }) => {
     return (
         <AppBar position="static"
                 color='inherit'
-                style={{ backgroundColor: '#ffffff'}}
+                style={{
+                    backgroundColor: '#ffffff',
+                    padding: 0
+                }}
                 className="shadow-sm"
         >
             <Toolbar>
-                <IconButton edge="start" className={classes.menuButton} color="inherit"
+                <IconButton edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
                             onClick={() => {
                                 handleMenu(true)
                             }}>
                     <MenuRoundedIcon />
                 </IconButton>
                 <Logo className={classes.logo}/>
-
                     <Link href="/"
                           underline='none'
                           style={{ textDecoration: 'none'}}
                     >
-                        <Typography variant="h6" className={classes.title}>
-                        Кабинет ЕСЗК
+                         <Typography variant="h6"
+                                     className={classes.title}>
+                             Кабинет ЕСЗК
                         </Typography>
                     </Link>
             </Toolbar>

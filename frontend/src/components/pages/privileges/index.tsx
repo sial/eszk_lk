@@ -1,38 +1,37 @@
 import React, {useEffect, useState} from 'react'
-import {Table, Button} from 'antd'
 import headerPrivileges from './headerPrivileges.json'
 import Audit from '../../utils/audit'
 import EditCard from './EditCard'
 import '../../../assets/styles/privileges.scss'
-import {Box, Container, createStyles, Grid, Paper, Card, Theme, CardContent} from "@material-ui/core";
-import Title from "antd/lib/typography/Title";
-// import Typography from "@material-ui/core/Typography";
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import Typography from "@material-ui/core/Typography";
-import {makeStyles} from "@material-ui/core/styles";
-import { cardStyles } from "../../layout/useStyles";
+import {Grid, Card, CardContent} from "@material-ui/core"
+import LockOpenIcon from '@material-ui/icons/LockOpen'
+import Typography from "@material-ui/core/Typography"
+import { cardStyles } from "../../layout/useStyles"
+import MaterialTable, {Action} from 'material-table'
+import { Button } from '@material-ui/core'
 
 const Privileges: React.FC = () => {
     let [editPrivilege, setEditPrivilege] =
         useState<any>(null)
 
-    const actionColumn = {
-        title: 'Действие',
-        dataIndex: 'id',
-        render: (id: number, row: number, index: number) =>
-            <Button className="p-0" 
-                    style={{
-                         height: 16, 
-                         fontFamily: 'Roboto', 
-                         fontSize: '0.96em'
-                    }} 
-                    type="link" 
-                    onClick={() => {
-                        setEditPrivilege(dataPrivileges[index])
-            }}>
-                Редактировать
-            </Button>
-    }
+    // const actionColumn = {  todo: remove
+
+    //     title: 'Действие',
+    //     field: 'id',
+    //     render: (id: number, row: number, index: number) =>
+    //         <Button className="p-0"
+    //                 style={{
+    //                      height: 16,
+    //                      fontFamily: 'Roboto',
+    //                      fontSize: '0.96em'
+    //                 }}
+    //                 variant="text"
+    //                 onClick={() => {
+    //                     setEditPrivilege(dataPrivileges[index])
+    //                 }}>
+    //             Редактировать
+    //         </Button>
+    // }
 
     const dataPrivileges = [
         {
@@ -76,20 +75,19 @@ const Privileges: React.FC = () => {
         }
     ]
 
-    useEffect(() => {
-        headerPrivileges.push(actionColumn)
-        return () => {
-            headerPrivileges.splice(-1,1)
-        }
-    }, [actionColumn])
-
 
     const classes = cardStyles();
 
     return (
-        <Grid container direction="column" spacing={1}>
+        <Grid container
+              direction="column"
+              spacing={1}>
             <Grid item>
-                <Grid container direction="row" alignItems="center" alignContent="center" spacing={1}>
+                <Grid container
+                      direction="row"
+                      alignItems="center"
+                      alignContent="center"
+                      spacing={1}>
                     <Grid item>
                         <LockOpenIcon
                             fontSize="small"
@@ -97,46 +95,60 @@ const Privileges: React.FC = () => {
                         />
                     </Grid>
                     <Grid item>
-                        <Typography variant='h5'>Привилегии</Typography>
+                        <Typography variant='h5'>
+                            Привилегии
+                        </Typography>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item direction='row' xs>
+            <Grid item xs>
                 <Grid container spacing={2}>
                     <Grid item md={9}>
-                        {/*<Card bodyStyle={{padding: 0}}>*/}
-                        {/*    <Table columns={headerPrivileges}*/}
-                        {/*           dataSource={dataPrivileges}*/}
-                        {/*           rowKey="id"*/}
-                        {/*           size="small"*/}
-                        {/*           pagination={{*/}
-                        {/*               showSizeChanger: true*/}
-                        {/*           }}*/}
-                        {/*    />*/}
-                        {/*</Card>*/}
-
-                        {/*<Paper>*/}
-                        {/*    test*/}
-                        {/*</Paper>*/}
-
                         <Card variant='outlined'>
                             <CardContent className={classes.cardPadding}>
-                                <Table columns={headerPrivileges}
-                                       dataSource={dataPrivileges}
-                                       rowKey="id"
-                                       size="small"
-                                       pagination={{
-                                           showSizeChanger: true
-                                       }}
+                                <MaterialTable
+                                    style={{padding: '0 !important'}}
+                                    localization={{
+                                        header: {
+                                            actions: '',
+                                        },
+                                        pagination: {
+                                            labelDisplayedRows: '{from}-{to}',
+                                            labelRowsSelect: ''
+                                        }
+                                    }}
+                                    components = {{
+                                        Action: (props) => (
+                                            <Button >{props.action.icon}</Button>
+                                        )
+                                    }}
+                                    columns={headerPrivileges}
+                                    data={dataPrivileges}
+                                    actions={[
+                                        {
+                                            icon: 'Редактировать',
+                                            tooltip: '',
+                                            onClick: (event, rowData: any) => {
+                                                setEditPrivilege(dataPrivileges[rowData.id])
+                                            }
+                                        }
+                                    ]}
+                                    options={{
+                                        actionsColumnIndex: -1,
+                                        search: false,
+                                        showTitle: false
+                                    }}
                                 />
                             </CardContent>
                         </Card>
                     </Grid>
 
                     <Grid item md={3}>
-                         <EditCard editPrivilege={editPrivilege}
-                                 setEditPrivilege={setEditPrivilege}
-                                 savePrivilege={() => setEditPrivilege(null)}/>
+                        <EditCard editPrivilege={editPrivilege}
+                                  setEditPrivilege={setEditPrivilege}
+                                  savePrivilege={() => {
+                                      setEditPrivilege(null)
+                                  }}/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -170,7 +182,7 @@ const Privileges: React.FC = () => {
         //         <Grid md item className="bg-info">
         //             Аудит
         //         </Grid>
-            // </Grid>
+        // </Grid>
 
         // <div className="container-md d-flex">
         //     <div className="row flex-fill">

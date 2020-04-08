@@ -1,13 +1,9 @@
 import React from 'react'
-import { Input, Divider} from 'antd'
 import {
-    Box,
     Button,
     Card,
     CardActions,
     CardContent,
-    CardHeader,
-    Fade,
     Grid, Slide,
     TextField,
     Typography
@@ -65,13 +61,19 @@ const EditCard: React.FC<IEditCard> =
                     />
                 </CardContent>
                 <CardActions>
-                    <Grid container justify="flex-end" alignItems="center" spacing={1} style={{ paddingRight : 12 }}>
+                    <Grid container
+                          justify="flex-end"
+                          alignItems="center"
+                          spacing={1}
+                          style={{ paddingRight : 12 }}>
                         <Grid item>
                             <Button
-                                variant="outlined" disableElevation
-                                disableRipple
+                                variant="outlined"
                                 onClick={() => setEditPrivilege(null)}
-                                style={{ marginLeft: 'auto', textTransform: 'capitalize'}}>
+                                style={{
+                                    marginLeft: 'auto',
+                                    textTransform: 'capitalize'
+                                }}>
                                 Отменить
                             </Button>
                         </Grid>

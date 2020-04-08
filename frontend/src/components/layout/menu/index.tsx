@@ -1,8 +1,7 @@
-import React, {useEffect, useRef} from 'react'
-import ReactDOM from 'react-dom'
-import { Menu } from 'antd'
+import React, {useCallback} from 'react'
 import MenuList from './menu.json'
 import {Link, useLocation} from 'react-router-dom'
+import {List, ListItem, ListItemText, ListItemIcon, Icon} from '@material-ui/core'
 
 interface IMenu {
     showMenu: Boolean
@@ -10,42 +9,36 @@ interface IMenu {
 }
 
 const MainMenu: React.FC<IMenu> = ({ showMenu, handleMenu }) => {
-    const menu = useRef(null)
     const location = useLocation()
-    const handleCloseMenu = ({ target }: any) => {
-        const menuEl = ReactDOM.findDOMNode(menu.current)
-        if (menuEl !== null && showMenu &&
-            !menuEl.contains(target)) {
-            handleMenu(false)
-        }
-    }
-    useEffect(() => {
-        document.addEventListener('click', handleCloseMenu)
-       return () => {
-           document.removeEventListener('click', handleCloseMenu)
-       }
-    })
-    const getCurrentRouteIndex = () => {
-        return String(MenuList.findIndex((item) => {
-            return item.path === location.pathname
-        }))
-    }
+
+    const isCurrentRoute = useCallback((path) => {
+        return path === location.pathname
+    }, [location.pathname])
 
     return (
-        <Menu
-            ref={menu}
-            style={{height: '100vh'}}
-            theme="light"
-            mode="inline"
-            selectedKeys={[getCurrentRouteIndex()]}
+        <div
+            role="presentation"
+            style={{
+                width: 250
+            }}
+            onClick={() => handleMenu(false)}
+            onKeyDown={() => handleMenu(false)}
         >
-            {MenuList.map((item, key) => (
-                <Menu.Item key={key}
-                           onClick={() => handleMenu(false)}>
-                    <Link to={item.path}>{item.title}</Link>
-                </Menu.Item>
-            ))}
-        </Menu>
+            <List>
+                {MenuList.map((item, key) => (
+                    <Link key={key} to={item.path}>
+                        <ListItem selected={isCurrentRoute(item.path)}
+                                  button>
+                                <ListItemIcon>
+                                    <Icon>{item.icon}</Icon>
+                                </ListItemIcon>
+                                <ListItemText style={{color: 'black'}}
+                                              primary={item.title}/>
+                        </ListItem>
+                    </Link>
+                    ))}
+            </List>
+        </div>
     )
 }
 

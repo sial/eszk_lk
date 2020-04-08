@@ -1,14 +1,17 @@
 [
   {
     "title": "Главная",
+    "icon": "home",
     "path": "/"
   },
   {
     "title": "Роли",
+    "icon": "people",
     "path": "/roles"
   },
   {
     "title": "Привилегии",
+    "icon": "lock_open",
     "path": "/privileges"
   }
 ]

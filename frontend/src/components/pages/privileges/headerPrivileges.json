@@ -1,14 +1,14 @@
 [
   {
     "title": "ID",
-    "dataIndex": "id"
+    "field": "id"
   },
   {
     "title": "Привилегия",
-    "dataIndex": "privileges"
+    "field": "privileges"
   },
   {
     "title": "Псевдоним",
-    "dataIndex": "alias"
+    "field": "alias"
   }
 ]
